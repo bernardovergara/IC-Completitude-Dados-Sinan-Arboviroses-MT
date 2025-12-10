@@ -1,25 +1,25 @@
 library(microdatasus)
-library(dplyr)
-library(lubridate)
+library(tidyverse)
 
-importarDados <- TRUE
-# Importar dados SINAN de dengue estado do Mato Grosso
-if (importarDados) {
-    dados_dengue_mt <- fetch_datasus(
-    year_start = 2010,
-    year_end = 2013,
-    uf = "MT",
-    information_system = "SINAN-DENGUE"
-    )
-    
-    dados_dengue_mt <- process_sinan_dengue(dados_dengue_mt)
-    
-    write.csv(
-        dados_dengue_mt,
-        "data//raw//dengue_mt.csv"
+anos <- 2010:2011
+uf_ <- "MT"
+sis <- "SINAN-DENGUE"
+
+for(ano in anos) {
+    dados <- fetch_datasus(
+    year_start = ano,
+    year_end = ano,
+    uf = uf_,
+    information_system = sis
     )
 
-} else {
-    dados_dengue_mt <- read.csv("data//raw//dengue_mt.csv")
+    if (sis == "SINAN-DENGUE") {
+        dados <- process_sinan_dengue(dados)
+    }
+
+    write_csv(
+        dados,
+        paste0("data//raw//dados_", sis, "_", as.character(ano), ".csv"),
+        progress = show_progress()
+    )
 }
-

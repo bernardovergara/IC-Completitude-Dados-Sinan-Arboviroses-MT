@@ -1,7 +1,7 @@
 library(microdatasus)
 library(tidyverse)
 
-anos <- 2010:2011
+anos <- 2010:2025
 uf_ <- "MT"
 sis <- "SINAN-DENGUE"
 

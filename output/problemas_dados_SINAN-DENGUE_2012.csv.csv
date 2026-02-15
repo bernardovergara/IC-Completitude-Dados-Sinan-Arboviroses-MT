@@ -1,4 +1,0 @@
-row,col,expected,actual,file
-79685,40,,embedded null,
-79685,76,79 columns,76 columns,
-151437,10,date in ISO8601,212-06-26,

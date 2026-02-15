@@ -1,6 +1,12 @@
 library(microdatasus)
 library(tidyverse)
 
+# diretório de trabalho
+source("wd.r")
+setwd(wd)
+
+source("caminhos.r")
+
 anos <- 2010:2025
 uf_ <- "MT"
 sis <- "SINAN-DENGUE"
@@ -19,7 +25,7 @@ for (ano in anos) {
 
   write_csv(
     dados,
-    paste0("data//raw//dados_", sis, "_", as.character(ano), ".csv"),
+    paste0(dados_brutos$path, "dados_", sis, "_", as.character(ano), ".csv"),
     progress = show_progress()
   )
 }

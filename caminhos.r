@@ -1,11 +1,11 @@
 # definir caminhos para os dados
 
-dados_brutos <- c(
+dados_brutos <- list(
   path = "data/raw",
-  pattern = "\\.csv$",
+  pattern = "\\.csv$"
 )
 
-dados_filtrados <- c(
+dados_filtrados <- list(
   path = "data/processed",
   pattern = "\\.csv$",
   prefix = "filtrado_"

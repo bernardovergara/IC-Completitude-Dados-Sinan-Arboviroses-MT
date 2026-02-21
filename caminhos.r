@@ -1,7 +1,7 @@
 # definir caminhos para os dados
 
 dados_brutos <- list(
-  path = "data/raw",
+  path = "data/raw/",
   pattern = "\\.csv$"
 )
 

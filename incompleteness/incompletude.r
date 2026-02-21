@@ -1,5 +1,7 @@
 library(tidyverse)
 
+source("filtro.r")
+
 calc_incomp <- function(subconjunto, total) {
   (nrow(subconjunto) / total) * 100
 }

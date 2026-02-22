@@ -1,12 +1,10 @@
 library(tidyverse)
 
-source("filtro.r")
-
 calc_incomp <- function(subconjunto, total) {
   (nrow(subconjunto) / total) * 100
 }
 
-calcular_incompletude <- function(dados) {
+calcular_incompletude <- function(dados, filtro_dict) {
   # Definição dos filtros de incompletude
   total <- nrow(dados)
 
@@ -40,7 +38,7 @@ calcular_incompletude <- function(dados) {
     )
 
   tibble::tibble(
-    variavel = filtro,
+    variavel = filtro_dict,
     perc_incomp = c(
       calc_incomp(nu_idade_n_incomp, total),
       calc_incomp(cs_sexo_incomp, total),

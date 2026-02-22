@@ -2,5 +2,5 @@ data/filtered/*
 !data/filtered/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
-plots*
+plots/*
 !plots.gitkeep

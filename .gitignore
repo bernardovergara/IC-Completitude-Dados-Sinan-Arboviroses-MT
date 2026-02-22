@@ -1,1 +1,6 @@
-/data/
+data/filtered/*
+!data/filtered/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+plots*
+!plots.gitkeep

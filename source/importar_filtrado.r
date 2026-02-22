@@ -4,6 +4,9 @@ library(microdatasus)
 source("packages/system_process_mapping.r")
 source("config.r")
 
+# Criar diretório se não existir
+dir.create("data/filtered", showWarnings = FALSE, recursive = TRUE)
+
 for (i in seq_len(nrow(combinacoes))) {
 
   uf_  <- combinacoes$uf[i]
@@ -20,21 +23,20 @@ for (i in seq_len(nrow(combinacoes))) {
     )
 
     if (nrow(dados) == 0) {
-      message("Sem dados para ", ano)
+      message("Sem dados para ", sis, " - ", uf_, " - ", ano)
       next
     }
 
     dados <- process_by_system(dados, sis)
 
-    caminho_arquivo <- file.path(
-      path_dados_filtrados$path,
-      paste0("dados_", sis, "_", uf_, "_", ano, ".csv")
-    )
+    caminho_arquivo <- path_dados_filtrados_f(sis, uf_, ano)
 
     write_csv(dados, caminho_arquivo)
-    message("Arquivo salvo: ", caminho_arquivo)
+    message("✓ Arquivo salvo: ", caminho_arquivo)
 
   }, error = function(e) {
-    message("Erro em ", uf_, " - ", sis, " - ", ano, ": ", e$message)
+    message("✗ Erro em ", sis, " - ", uf_, " - ", ano, ": ", e$message)
   })
 }
+
+message("\n=== IMPORTAÇÃO FINALIZADA ===")

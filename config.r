@@ -1,6 +1,6 @@
 # Dados Analisados
 anos <- 2010:2010
-ufs  <- "MT"
+ufs  <- c("MT")
 siss <- c("SINAN-DENGUE", "SINAN-CHIKUNGUNYA", "SINAN-ZIKA")
 
 combinacoes <- expand.grid(
@@ -16,7 +16,7 @@ path_dados_filtrados_f <- function(sis, uf_, ano) {
 }
 
 path_dados_processados_f <- function(sis, uf_, ano) {
-  file.path("data/processed", paste0("incompletude_", sis, "_", uf_, "_", ano, ".csv"))
+  file.path("data/processed", paste0("incompletude_", sis, "_", uf_, "_", ano, ".csv")) # nolint
 }
 
 path_plots_por_ano_f <- function(sis) {

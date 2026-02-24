@@ -7,6 +7,24 @@ source("config.r")
 # Criar diretório se não existir
 dir.create("data/filtered", showWarnings = FALSE, recursive = TRUE)
 
+codigo_uf <- NULL
+if (!is.null(ufs)) {
+  if (!("SG_UF_NOT" %in% filtro)) {
+    filtro <- c(filtro, "SG_UF_NOT")
+  }
+
+  codigo_uf <- read_csv("data/utils/uf_ibge_cods.csv")
+}
+
+filtrar_estados <- function(dados, ufs) {
+  if (is.null(ufs)) {
+    print("Nenhum filtro de estado aplicado. Retornando todos os dados.")
+    return(dados)
+  }
+  ufs_cods <- codigo_uf$codigo[which(codigo_uf$estado %in% ufs)]
+  filter(dados, SG_UF_NOT %in% ufs_cods) # nolint
+}
+
 for (i in seq_len(nrow(combinacoes))) {
 
   uf_  <- combinacoes$uf[i]
@@ -17,15 +35,16 @@ for (i in seq_len(nrow(combinacoes))) {
     dados <- fetch_datasus(
       year_start = ano,
       year_end = ano,
-      uf = uf_,
       information_system = sis,
       vars = filtro
     )
 
     if (nrow(dados) == 0) {
-      message("Sem dados para ", sis, " - ", uf_, " - ", ano)
+      message("Sem dados para ", sis, " - ", ano)
       next
     }
+
+    dados <- filtrar_estados(dados, ufs)
 
     dados <- process_by_system(dados, sis)
 

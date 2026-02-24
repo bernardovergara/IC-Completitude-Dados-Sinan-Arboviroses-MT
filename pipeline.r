@@ -1,3 +1,7 @@
+
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("microdatasus")) install.packages("microdatasus")
+
 # Pipeline completo: Importação → Incompletude → Visualização
 
 message("=== INICIANDO PIPELINE ===")

@@ -1,5 +1,5 @@
 # Dados Analisados
-anos <- 2010:2010
+anos <- 2010:2025
 ufs  <- c("MT")
 siss <- c("SINAN-DENGUE", "SINAN-CHIKUNGUNYA", "SINAN-ZIKA")
 

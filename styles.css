@@ -1,0 +1,19 @@
+p,
+.abstract,
+.quarto-title-meta,
+main li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+pre,
+code,
+table,
+th,
+td,
+figcaption,
+.figure-caption,
+.cell-output,
+.sourceCode {
+  text-align: left;
+}

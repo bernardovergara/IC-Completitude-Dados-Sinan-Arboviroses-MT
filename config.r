@@ -19,8 +19,8 @@ path_dados_processados_f <- function(sis, uf_, ano) {
   file.path("data/processed", paste0("incompletude_", sis, "_", uf_, "_", ano, ".csv")) # nolint
 }
 
-path_plots_por_ano_f <- function(sis) {
-  file.path("plots", paste0("plot_incompletude_", sis, "_por_ano.png"))
+path_plots_por_ano_f <- function(sis, ext = "png") {
+  file.path("plots", paste0("plot_incompletude_", sis, "_por_ano.", ext))
 }
 
 # Variáveis Analisadas

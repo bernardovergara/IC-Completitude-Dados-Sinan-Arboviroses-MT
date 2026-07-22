@@ -31,16 +31,21 @@ for (sistema in sistemas_unicos) {
     geom_point(size = 2) +
     scale_x_continuous(breaks = seq(min(df_sis$ano), max(df_sis$ano), by = 2)) +
     scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+    # Sem título embutido: a legenda da figura no manuscrito cumpre esse papel,
+    # conforme as normas da RESS.
     labs(
-      title = paste("Evolução da Incompletude por Variável -", sistema),
       x = "Ano",
       y = "% Incompletude",
       color = "Variável"
     ) +
-    theme_minimal() +
+    theme_minimal(base_family = "serif", base_size = 11) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-  caminho_saida <- path_plots_por_ano_f(sistema)
-  ggsave(caminho_saida, plot, width = 10, height = 6)
-  message("Plot salvo: ", caminho_saida)
+  # PNG para leitura no manuscrito; PDF vetorial para submissão (a RESS exige
+  # PDF, SVG ou EPS para gráficos, em arquivos separados).
+  for (ext in c("png", "pdf")) {
+    caminho_saida <- path_plots_por_ano_f(sistema, ext)
+    ggsave(caminho_saida, plot, width = 17, height = 10, units = "cm", dpi = 300)
+    message("Plot salvo: ", caminho_saida)
+  }
 }

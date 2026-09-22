@@ -68,7 +68,7 @@ Diante deste contexto, o presente estudo visa apresentar o resultado da análise
 
 Este estudo tem caráter descritivo e analisa a completude dos registros das arboviroses dengue, chikungunya e zika, notificados no Sistema de Informação de Agravos de Notificação (Sinan) no estado do Mato Grosso. O período analisado abrange todos os anos disponíveis no Sinan para cada arbovirose: de 2010 a 2025 para dengue, de 2014 a 2025 para chikungunya e de 2015 a 2025 para zika, de acordo com os dados disponíveis.
 
-A análise da completude foi desenvolvida com a linguagem de programação R [@r_core_team_r_2024], os dados importados do sistema do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025] foram obtidos por meio do pacote microdatasus [@saldanha_microdatasus_2019]. A extração dos dados foi realizada em 19 de julho de 2026, estando sujeita a possíveis atualizações posteriores da base pelo DATASUS. O código de análise utilizado está disponível em repositório público. 
+A análise da completude foi desenvolvida com a linguagem de programação R [@r_core_team_r_2024], os dados importados do sistema do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025] foram obtidos por meio do pacote microdatasus [@saldanha_microdatasus_2019]. A extração dos dados foi realizada em 19 de julho de 2026, estando sujeita a possíveis atualizações posteriores da base pelo DATASUS. O código de análise utilizado está disponível em repositório público [@vergara_completitude_2026]. 
 
 Não foi realizado cálculo amostral, uma vez que o estudo incluiu a totalidade dos casos notificados no Sinan/MT. Foram incluídos todos os casos notificados de dengue, chikungunya e zika no Sinan/MT nos respectivos períodos analisados, independentemente do critério de confirmação e do desfecho final da investigação. Os critérios de exclusão dos dados foram: não residir no estado do Mato Grosso e apresentar mudança de diagnóstico no decorrer da investigação do caso. Foram analisadas as seguintes variáveis: escolaridade (essencial), raça/cor da pele (essencial), se gestante (obrigatória), sexo (obrigatória) e idade (obrigatória).
 
@@ -156,11 +156,11 @@ Este estudo apresenta como limitação o uso de dados secundários, cuja atualiz
 
 ## Disponibilidade de dados
 
-Os bancos de dados utilizados nesta pesquisa são de domínio público e estão disponíveis na plataforma do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025], compreendendo registros do período de 2010 a 2025. A extração dos dados foi realizada por meio do pacote microdatasus [@saldanha_microdatasus_2019], desenvolvido para a linguagem R [@r_core_team_r_2024], que permite o acesso programático e a leitura dos arquivos de domínio público do DATASUS.
+Os bancos de dados utilizados nesta pesquisa são de domínio público e estão disponíveis na plataforma do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025], compreendendo registros do período de 2010 a 2025. A extração dos dados foi realizada por meio do pacote microdatasus [@saldanha_microdatasus_2019], desenvolvido para a linguagem R [@r_core_team_r_2024], que permite o acesso programático e a leitura dos arquivos de domínio público do DATASUS. O código de análise utilizado está disponível em repositório público [@vergara_completitude_2026].
 
 O banco de dados está disponível em: <https://datasus.saude.gov.br/>
 
-Os códigos de análise estão disponíveis em: <https://github.com/bernardovergara/IC-Completitude-Dados-Sinan-Arboviroses-MT/tree/submissao-RESS>
+Os códigos de análise estão disponíveis em: <https://github.com/bernardovergara/IC-Completitude-Dados-Sinan-Arboviroses-MT>
 
 <p class="espaco">&nbsp;</p>
 

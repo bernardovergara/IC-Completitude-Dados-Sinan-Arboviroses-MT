@@ -1,0 +1,243 @@
+---
+format:
+  
+  docx:
+    fig-align: "center"
+    fontsize: "12pt"
+    mainfont: "Times New Roman"
+    reference-doc: modelo-relatorio.docx
+    fig-width: 7
+lang: pt-BR
+bibliography: referencias.bib
+csl: modelo/vancouver.csl
+execute:
+  echo: false
+  warning: false
+---
+```{r}
+#| label: setup
+#| include: false
+
+source("scripts/criar_tabelas.r")
+
+if (!requireNamespace("knitr", quietly = TRUE)) {
+  install.packages("knitr", repos = "https://cloud.r-project.org")
+}
+
+library(knitr)
+```
+
+```{=openxml}
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>UNIVERSIDADE FEDERAL DE RONDONÓPOLIS</w:t></w:r>
+</w:p>
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>PRÓ-REITORIA DE ENSINO DE PÓS-GRADUAÇÃO E PESQUISA</w:t></w:r>
+</w:p>
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>DIRETORIA DE PESQUISA</w:t></w:r>
+</w:p>
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>GERÊNCIA DE INICIAÇÃO CIENTÍFICA E TECNOLÓGICA</w:t></w:r>
+</w:p>
+
+<w:p/><w:p/><w:p/>
+
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>BERNARDO DE OLIVEIRA VERGARA</w:t></w:r>
+</w:p>
+
+<w:p/><w:p/><w:p/>
+
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="480" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:u w:val="single"/><w:sz w:val="24"/></w:rPr><w:t>RELATÓRIO PARCIAL</w:t></w:r>
+</w:p>
+
+<w:p/><w:p/>
+
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="480" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>ANÁLISE DA COMPLETUDE DAS FICHAS DE NOTIFICAÇÃO</w:t></w:r>
+</w:p>
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="480" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>DAS ARBOVIROSES NO ESTADO DO MATO GROSSO</w:t></w:r>
+</w:p>
+
+<w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/><w:p/>
+
+<w:p>
+  <w:pPr><w:jc w:val="both"/><w:spacing w:line="240" w:lineRule="auto"/><w:ind w:left="4536"/></w:pPr>
+  <w:r><w:rPr><w:sz w:val="24"/></w:rPr><w:t xml:space="preserve">Relatório Parcial apresentado à Universidade Federal de Rondonópolis, Pró-Reitoria de Ensino de Pós-graduação e Pesquisa, Programa Institucional de Iniciação Científica e de Iniciação em Desenvolvimento Tecnológico e Inovação, sob orientação do </w:t></w:r>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>Prof. Dr. Djalma Adão Barbosa Júnior / Faculdade de Ciências Aplicadas e Políticas / Universidade Federal de Rondonópolis.</w:t></w:r>
+</w:p>
+
+<w:p/><w:p/><w:p/>
+
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>RONDONÓPOLIS</w:t></w:r>
+</w:p>
+<w:p>
+  <w:pPr><w:jc w:val="center"/><w:spacing w:line="240" w:lineRule="auto"/></w:pPr>
+  <w:r><w:rPr><w:b/><w:sz w:val="24"/></w:rPr><w:t>2026</w:t></w:r>
+</w:p>
+
+<w:p>
+  <w:r><w:br w:type="page"/></w:r>
+</w:p>
+```
+
+### Nota de Pesquisa{.text-end}
+# Análise da Completude dos Dados de Arboviroses: estudo descritivo, Mato Grosso, 2010–2025 
+
+<p class="espaco">&nbsp;</p>
+
+## Resumo
+
+**Objetivo:** Analisar a completude dos dados do Sistema de Informação de Agravos de Notificação (Sinan) referentes à dengue, chikungunya e zika no estado de Mato Grosso. **Método:** Estudo descritivo de 582.793 casos notificados, sendo 422.823 casos de dengue (2010–2025), 115.159 de chikungunya (2014–2025) e 44.811 zika (2015–2025). Foram analisadas as variáveis escolaridade, raça/cor da pele, gestante, sexo e idade, classificadas pelo escore de Romero e Cunha. **Resultados:** Sexo e idade apresentaram incompletude nula; escolaridade registrou os maiores índices nas três doenças, com escores entre regular e ruim e picos em anos epidêmicos; raça/cor da pele mostrou melhoria progressiva para a dengue, com oscilação sem tendência definida para as demais. Gestante manteve incompletude entre 9,8% e 28,3%, especialmente preocupante para a zika. **Conclusão:** A qualidade dos dados é heterogênea, com fragilidades persistentes nos campos sociodemográficos, reforçando a necessidade de monitoramento sistemático e capacitação continuada dos profissionais de saúde.
+<p class="espaco">&nbsp;</p>
+
+**Palavras-chave:** Infecções por Arbovirus, Doenças Negligenciadas, Serviços de Vigilância Epidemiológica, Confiabilidade dos Dados, Sistemas de Informação em Saúde.
+<p class="espaco">&nbsp;</p>
+
+| **Aspectos éticos** |
+|:---|
+| O estudo visa a utilização de dados secundários de domínio público, diretamente obtidos do Departamento de Informática do Sistema Único de Saúde (DATASUS), com a base de dados do SINAN, onde os dados serão extraídos para casos de dengue, chikungunya e zika. Por se tratar de dados secundários, de acesso público e irrestrito, sem identificação dos sujeitos envolvidos, o presente estudo dispensa apreciação por Comitê de Ética em Pesquisa, conforme a Resolução CNS nº 510/2016, que exclui da obrigatoriedade de registro e avaliação pelo sistema CEP/CONEP as pesquisas que utilizam informações de domínio público. |
+
+: {.custom-style="Tabelacomgrade"}
+
+<p class="espaco">&nbsp;</p>
+
+## Introdução
+
+As arboviroses fazem parte do grupo de doenças tropicais negligenciadas composta por doenças que atingem principalmente as populações pobres e vulneráveis, em regiões tropicais e subtropicais, assim como países em desenvolvimento [@hotezWhatConstitutesNeglected2020]. Em especial no contexto brasileiro apresentam ampla distribuição geográfica, com padrões de endemicidade distintos e impactos significativos [@martins-meloBurdenNeglectedTropical2018].
+
+A vigilância epidemiológica adequada dessas enfermidades depende da qualidade dos dados registrados nos sistemas de informação em saúde, o que é feito pelo Sistema de Informação de Agravos de Notificação (Sinan). No Brasil, o Sinan constitui o principal instrumento de coleta e processamento de dados sobre doenças e agravos de notificação compulsória [@brasil.ministeriodasaude.secretariadevigilanciaemsaude.departamentodevigilanciaepidemiologicaSistemaInformacaoAgravos2007]. A qualidade dos dados registrados no Sinan é essencial para a construção de ações efetivas voltadas para a mitigação, prevenção e controle das doenças tropicais negligenciadas, subsidiando o planejamento de políticas públicas e a alocação adequada de recursos [@chiavegattofilhoUsoBigData2015].
+
+A completude (ou completitude) é um atributo da análise da qualidade dos dados, referente ao grau em que registros apresentam valores preenchidos ou não nulos [@correiaMetodosParaAvaliar2014]. A análise deste atributo é fundamental para assegurar a confiabilidade das investigações epidemiológicas e para orientar, de maneira adequada, o planejamento e a tomada de decisões em saúde pública.
+
+No Brasil, a avaliação da qualidade dos dados produzidos pelos Sistemas de Informação em Saúde não ocorre de forma sistemática ou segundo um plano de monitoramento padronizado pelo Ministério da Saúde. Como consequência, as iniciativas de análise e controle da qualidade desses dados tendem a ser pontuais e pouco articuladas entre si. Essa lacuna no monitoramento sistemático da qualidade dos dados é particularmente preocupante no contexto das doenças tropicais negligenciadas, doenças que já sofrem historicamente com subnotificação e invisibilidade nas agendas de saúde pública.
+
+O estado do Mato Grosso está localizado na região Centro-Oeste do Brasil e é composto por 141 municípios, com população estimada em aproximadamente 3,6 milhões de habitantes para 2024. O estado apresenta condições climáticas favoráveis à proliferação do *Aedes aegypti*, vetor das arboviroses estudadas, com temperaturas elevadas e períodos chuvosos prolongados, tornando-o uma área de relevância epidemiológica para a vigilância dessas doenças.
+
+Diante deste contexto, o presente estudo visa apresentar o resultado da análise da completude dos dados das fichas de notificação Sinan referentes às arboviroses no estado de Mato Grosso. Desta forma contribui para a identificação do panorama atual da qualidade da informação disponível sobre essas enfermidades e as estratégias propostas ou implementadas para aprimoramento da completude das informações, fortalecendo a vigilância epidemiológica das arboviroses no estado.
+
+<p class="espaco">&nbsp;</p>
+
+## Métodos
+
+Este estudo tem caráter descritivo e analisa a completude dos registros das arboviroses dengue, chikungunya e zika, notificados no Sistema de Informação de Agravos de Notificação (Sinan) no estado do Mato Grosso. O período analisado abrange todos os anos disponíveis no Sinan para cada arbovirose: de 2010 a 2025 para dengue, de 2014 a 2025 para chikungunya e de 2015 a 2025 para zika, de acordo com os dados disponíveis.
+
+A análise da completude foi desenvolvida com a linguagem de programação R [@r_core_team_r_2024], os dados importados do sistema do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025] foram obtidos por meio do pacote microdatasus [@saldanha_microdatasus_2019]. A extração dos dados foi realizada em 19 de julho de 2026, estando sujeita a possíveis atualizações posteriores da base pelo DATASUS. O código de análise utilizado está disponível em repositório público [@vergara_completitude_2026]. 
+
+Não foi realizado cálculo amostral, uma vez que o estudo incluiu a totalidade dos casos notificados no Sinan/MT. Foram incluídos todos os casos notificados de dengue, chikungunya e zika no Sinan/MT nos respectivos períodos analisados, independentemente do critério de confirmação e do desfecho final da investigação. Os critérios de exclusão dos dados foram: não residir no estado do Mato Grosso e apresentar mudança de diagnóstico no decorrer da investigação do caso. Foram analisadas as seguintes variáveis: escolaridade (essencial), raça/cor da pele (essencial), se gestante (obrigatória), sexo (obrigatória) e idade (obrigatória).
+
+Como potenciais fontes de viés, destacam-se possíveis alterações nos instrumentos de notificação do Sinan ao longo dos 15 anos analisados, mudanças nos critérios de definição de caso ao longo do tempo e possível viés de subnotificação, inerente aos sistemas de vigilância passiva. Não houve possibilidade de correção desses vieses dado o caráter secundário dos dados, sendo tal limitação retomada na seção de Discussão.
+
+Consideraram-se como valores nulos os campos não preenchidos, os registrados como "ignorado" e os marcados como "não se aplica", sendo este último tratado como nulo apenas nos casos em que o campo deveria ter sido devidamente preenchido. Ressalta-se que as variáveis-chave e obrigatórias são indispensáveis para a inclusão da ficha no sistema, enquanto as variáveis essenciais, embora relevantes para o cálculo de indicadores, não impedem o registro quando não preenchidas. A variável idade foi utilizada como variável de controle, por não admitir preenchimento nulo, de modo que qualquer variação em sua completude indica falha no sistema de registro ou na base de dados.
+
+Neste trabalho, a qualidade dos dados é apresentada pela perspectiva da incompletude, ou seja, pelo percentual de registros ausentes, nulos ou incorretamente preenchidos em relação ao total de notificações. Para a classificação dos resultados, adotou-se o escore proposto por Romero e Cunha [@romeroAvaliacaoQualidadeVariaveis2007; @romeroAvaliacaoQualidadeVariaveis2006]: excelente (≤ 5%); bom (5% a 10%); regular (10% a 20%); ruim (20% a 50%); e muito ruim (> 50%). As análises foram realizadas de forma separada para cada arbovirose.
+
+A incompletude de cada variável foi calculada como o percentual de registros nulos em relação ao total de notificações válidas em cada ano, para cada arbovirose separadamente. As análises tiveram caráter exclusivamente descritivo, não tendo sido aplicados testes de hipótese, medidas de tendência, análises de sensibilidade ou intervalos de confiança para as proporções de incompletude.
+
+<p class="espaco">&nbsp;</p>
+
+## Resultados
+A análise da completude dos dados registrados no Sinan para dengue, chikungunya e zika revelou padrões distintos entre as variáveis investigadas, com variações expressivas ao longo do tempo. Após exclusão de registros duplicados, foram contabilizados 582.793 casos notificados em Mato Grosso no período analisado.
+
+De modo geral, as variáveis idade e sexo apresentaram incompletude próxima de zero em todos os anos e para as três arboviroses, comportamento compatível com o caráter mandatório desses campos no sistema. A ausência de variações ou inconsistências na variável idade indicou, adicionalmente, a inexistência de falhas pontuais na base de dados. Por sua vez, as variáveis essenciais escolaridade e raça/cor da pele apresentaram os maiores índices de incompletude, com trajetórias oscilantes ao longo do período analisado. A variável gestante, embora de preenchimento obrigatório, também registrou incompletude não nula em determinados períodos.
+
+```{r}
+#| label: fig-dengue
+#| fig-cap: "Incompletude das variáveis do SINAN-DENGUE. Mato Grosso, 2010-2025, n=422.823 registros"
+#| fig-height: 6.5
+#| dpi: 600
+
+heatmap_dengue_docx
+```
+
+A dengue entre 2010 e 2025 (@fig-dengue), com 422.823 notificações, teve no início do período (2010–2011), os valores atingiram 39,5% e 40,2%, classificados como ruins, seguidos de queda expressiva entre 2011 e 2013, chegando em 22% seguido de uma nova elevação em 2014, 33,5%, e posterior estabilização de 2015 a 2022, estando em torno de 16–23% (classificação regular a ruim) com exceção do ano de 2018 que atingiu 31,1%. Em 2023 e 2025, observou-se deterioração recente desse indicador, com valores de aproximadamente 31% e 29%, respectivamente, ambos classificados como ruins.
+
+A variável raça/cor da pele apresentou elevação da incompletude nos anos iniciais, passando de 18,4% em 2010 (regular) para 47,5% em 2014 (ruim), com tendência de redução progressiva a partir de então. A partir de 2016, os valores recuaram para a faixa de 7,9–13,9% (bom a regular). Registrou-se aumento abrupto em 2024, com 20,3% (ruim), seguido de queda para 7% (bom) no mesmo ano e 4,6% (excelente) em 2025.
+
+A variável gestante teve um aumento gradativo de 2010 a 2014 (16,4% a 34,6%), classificado como regular a ruim, seguido de redução até 2017 (12,6%, regular), novo aumento até 2018 (19,3%, regular), decréscimo até 2022 (16,6%) e elevação expressiva em 2023 (22,7%), com posterior estabilização.
+
+```{r}
+#| label: fig-chik
+#| fig-cap: "Incompletude das variáveis do SINAN-CHIKUNGUNYA. Mato Grosso, 2014-2025, n=115.159 registros"
+#| fig-height: 5
+#| dpi: 600
+
+heatmap_chikungunya_docx
+```
+
+Para a chikungunya no período de 2014 a 2025 (@fig-chik), houve 115.159 notificações. A escolaridade foi novamente a variável com maior incompletude, atingindo pico máximo em 2018 (46,9%, ruim). Os valores já eram elevados em 2014 (28,6%, ruim), 2015 (26,7%, ruim) e 2016 (18%, regular), sendo que, após 2018, observou-se redução com estabilização entre 13,3% e 20,8% (regular e ruim) nos anos seguintes. Em 2024, houve nova elevação para 28,2% (ruim), seguida de queda para 20,2% em 2025.
+
+A variável raça/cor da pele oscilou entre 2,1% (excelente) e 14,3% (bom) sem tendência clara de melhoria ou piora, mantendo-se predominantemente com escore bom. A variável gestante manteve-se entre 0% (excelente) e 18,6% (bom), com leve elevação em 2023 (18,6%) e posterior estabilização.
+
+```{r}
+#| label: fig-zika
+#| fig-cap: "Incompletude das variáveis do SINAN-ZIKA. Mato Grosso, 2015-2025, n=44.811 registros"
+#| fig-height: 4
+#| dpi: 600
+
+heatmap_zika_docx
+```
+
+Os dados de zika cobrem o período de 2015 a 2025 (@fig-zika), com 44.811 notificações. A variável escolaridade apresentou os maiores índices de incompletude entre as três arboviroses analisadas, variando entre 21,4% e 55,7%, com escore entre ruim e muito ruim ao longo do período. Os valores mais elevados foram registrados em 2015 (55,7%, muito ruim), 2018 (45,8%, ruim) e 2023 (49%, ruim), enquanto o menor índice foi observado em 2025 (21,4%, ruim), sugerindo melhoria recente, ainda que insuficiente para alcançar classificação satisfatória.
+
+A variável gestante oscilou entre 9,8% (bom) e 28,3% (ruim), com picos em 2015, 2018, 2019 e 2023 (28,3%, 23,1%, 23,2% e 23,1%, respectivamente). A variável raça/cor da pele apresentou incompletude entre 0,5% (excelente) e 30,5% (ruim), com trajetória irregular e valores classificados como ruim em 2015 (30,5%), como regular nos anos de 2016 (9,8%), 2019 (10,1%), 2020 (12,4%) e 2023 (10,3%) e o restante como excelente. As variáveis sexo e idade permaneceram com incompletude igual a zero ao longo de toda a série.
+
+<p class="espaco">&nbsp;</p>
+
+## Discussão
+
+A análise da completude dos dados das fichas de notificação de dengue, chikungunya e zika registrados no Sistema de Informação de Agravos de Notificação (Sinan) em Mato Grosso revelou padrões comuns entre as três arboviroses, com variações expressivas ao longo do tempo. Os resultados obtidos são convergentes com os descritos na literatura para outras doenças de notificação compulsória, em especial a tuberculose, indicando que os desafios na qualidade dos registros do Sinan não são exclusivos de um agravo ou região, mas refletem fragilidades estruturais do sistema de vigilância epidemiológica no país [@andradeCompletitudeSistemaInformacao2021; @damasioCompletudeSistemaInformacao2023; @marquesAvaliacaoNaoCompletude2020; @W3102447462].
+
+As variáveis obrigatórias sexo e idade apresentaram incompletude essencialmente nula em todas as doenças e ao longo de toda a série histórica, comportamento esperado dada a impossibilidade de registro no sistema sem o preenchimento desses campos. Esse resultado confirma o funcionamento adequado dos mecanismos de obrigatoriedade do Sinan e valida a base de dados para análises subsequentes. A variável idade, utilizada como controle metodológico neste estudo, não registrou variações ou inconsistências, indicando ausência de falhas pontuais na base de dados analisada.
+
+Em contraste, as variáveis essenciais escolaridade e raça/cor da pele apresentaram os maiores índices de incompletude entre os campos analisados, mantendo-se predominantemente nos escores regular e ruim ao longo de todo o período. Problemas semelhantes no preenchimento de variáveis sociodemográficas foram identificados em estudos sobre tuberculose no Sinan, tanto em municípios de alta carga da doença no Brasil [@andradeCompletitudeSistemaInformacao2021] quanto em Santa Catarina [@W3102447462], sugerindo que a dificuldade não é contingente à natureza do agravo, mas à percepção dos profissionais de saúde sobre a relevância dessas variáveis. Considerando que escolaridade e raça/cor da pele são determinantes sociais reconhecidos da vulnerabilidade às arboviroses, sua ausência nos registros compromete a validade das análises epidemiológicas e a formulação de políticas públicas equitativas voltadas ao enfrentamento dessas doenças [@martins-meloBurdenNeglectedTropical2018; @chiavegattofilhoUsoBigData2015].
+
+A escolaridade foi, em todas as três arboviroses, a variável com maior incompletude, sem jamais atingir escore melhor que regular em nenhum dos anos analisados. Resultado semelhante foi identificado por Andrade [@andradeCompletitudeSistemaInformacao2021] para a tuberculose em Mato Grosso, com queda da completude desse campo de 66,67% em 2017 para 28,45% em 2018. O não preenchimento desse campo pode estar relacionado à tendência de alguns profissionais de saúde a subestimar o valor epidemiológico do preenchimento das fichas, tratando-o como tarefa acessória à assistência em vez de componente essencial da vigilância [@W3102447462]. A melhoria dessa realidade requer a capacitação continuada das equipes de vigilância epidemiológica, com ênfase na importância das variáveis essenciais para o planejamento em saúde.
+
+Os picos de incompletude observados em anos de maior volume de notificações reforçam a associação entre sobrecarga dos serviços de saúde e redução da qualidade do preenchimento das fichas, padrão particularmente evidente para a dengue em 2011 e 2023 e para a chikungunya em 2018, anos marcados por surtos ou epidemias dessas arboviroses. Essa relação foi identificada também por outros autores [@marquesAvaliacaoNaoCompletude2020; @W3102447462; @rodrigomayerIncompletudeNotificacoesDengue2024], que apontam que situações emergenciais levam as equipes a negligenciar campos considerados não prioritários no contexto da assistência imediata. Esse achado reforça a necessidade de estratégias específicas de qualificação do registro em períodos de alta demanda, incluindo a simplificação dos fluxos de notificação e o reforço de equipes em contextos epidêmicos.
+
+A variável gestante, embora de preenchimento obrigatório, registrou incompletude não nula em todos os anos e para as três doenças, comportamento que pode estar associado ao preenchimento das opções "ignorado" ou "não se aplica". Esse resultado é especialmente preocupante no contexto da zika, dada a associação da doença com a síndrome congênita e a relevância do monitoramento de gestantes para a detecção precoce de casos de microcefalia e outras malformações fetais. A persistência de lacunas no registro dessa variável indica que a obrigatoriedade formal do campo não é, por si só, suficiente para garantir seu preenchimento adequado, sendo necessária a sensibilização dos profissionais quanto ao seu significado clínico e epidemiológico.
+
+A raça/cor da pele apresentou trajetória de melhoria progressiva ao longo do período, especialmente para a dengue, que atingiu escore excelente em 2025 (4,6%), sugerindo que iniciativas de qualificação do registro têm surtido efeito para essa variável. Resultado similar foi observado por Andrade [@andradeCompletitudeSistemaInformacao2021] para a tuberculose em Mato Grosso. Entretanto, a trajetória irregular dessa variável para chikungunya e zika, com oscilações sem tendência definida, indica que a melhoria observada para a dengue não se consolidou de forma sistemática para as demais arboviroses, o que pode refletir diferenças na maturidade dos programas de vigilância de cada agravo no estado.
+
+A análise comparativa entre as três arboviroses revela que a zika apresentou os maiores índices absolutos de incompletude na variável escolaridade, com valores entre 21,4% e 55,7% ao longo de todo o período, sem jamais atingir classificação satisfatória. Esse resultado pode estar relacionado ao menor tempo de incorporação da doença ao Sinan, sugerindo que os sistemas de vigilância de agravos mais recentes demandam maior atenção nos processos de qualificação dos registros em suas fases iniciais de implantação. A chikungunya, por sua vez, apresentou os menores índices de incompletude de raça/cor da pele entre os três agravos, mantendo-se predominantemente no escore bom, o que pode indicar maior atenção dos profissionais a essa variável no contexto desse agravo específico.
+
+No conjunto, os resultados apontam que a qualidade dos dados das arboviroses no Sinan em Mato Grosso é heterogênea entre variáveis, doenças e períodos, com fragilidades persistentes nos campos sociodemográficos essenciais. A verificação periódica da completude dos dados, a emissão de relatórios de acompanhamento e sua atualização devem integrar a rotina dos serviços municipais e estaduais de vigilância epidemiológica. O uso integrado de bases de dados disponíveis na vigilância epidemiológica das arboviroses pode contribuir para o resgate de dados incompletos e a redução da subenumeração de casos [@romeroAvaliacaoQualidadeVariaveis2007; @romeroAvaliacaoQualidadeVariaveis2006]. Além disso, deve-se estimular a cultura de monitoramento e avaliação por meio da capacitação continuada dos profissionais de saúde e de visitas técnicas aos programas de controle das arboviroses, unidades de saúde e laboratórios, com o objetivo de promover a valorização e o uso adequado da informação para o fortalecimento das ações de vigilância no estado.
+
+Este estudo apresenta como limitação o uso de dados secundários, cuja atualização e manipulação contínua pelo Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) podem alterar os resultados aqui apresentados em análises posteriores. Além disso, a análise em nível estadual, embora permita uma visão geral do panorama do Mato Grosso, não confere especificidade suficiente para captar as heterogeneidades entre os municípios. Por fim, o escore de Romero e Cunha, apesar de amplamente utilizado no Brasil, não constitui um padrão consolidado, o que pode limitar a comparabilidade dos resultados com outros estudos.
+
+<p class="espaco">&nbsp;</p>
+
+## Disponibilidade de dados
+
+Os bancos de dados utilizados nesta pesquisa são de domínio público e estão disponíveis na plataforma do Departamento de Informação e Informática do Sistema Único de Saúde (DATASUS) [@brasil_ministerio_da_saude_datasus_2025], compreendendo registros do período de 2010 a 2025. A extração dos dados foi realizada por meio do pacote microdatasus [@saldanha_microdatasus_2019], desenvolvido para a linguagem R [@r_core_team_r_2024], que permite o acesso programático e a leitura dos arquivos de domínio público do DATASUS. O código de análise utilizado está disponível em repositório público [@vergara_completitude_2026].
+
+O banco de dados está disponível em: <https://datasus.saude.gov.br/>
+
+Os códigos de análise estão disponíveis em: <https://github.com/bernardovergara/IC-Completitude-Dados-Sinan-Arboviroses-MT>
+
+<p class="espaco">&nbsp;</p>
+
+## Uso de inteligência artificial generativa
+
+Declaramos o uso de tecnologia assistida por inteligência artificial na elaboração deste manuscrito. A ferramenta Claude Anthropic (<https://claude.ai/>) foi utilizada exclusivamente como auxílio à escrita, contribuindo para o uso de conectivos e para o aprimoramento da coesão e da coerência textual. Em nenhum momento a ferramenta foi empregada para pesquisa, seleção ou indicação de referências bibliográficas. Todas as referências citadas neste estudo foram levantadas e verificadas em texto completo pelos autores, que também conferiram cada citação para assegurar a acurácia e a originalidade das afirmações apresentadas.
+
+<p class="espaco">&nbsp;</p>
+
+## Referências {.unnumbered}
+
+::: {#refs}
+:::

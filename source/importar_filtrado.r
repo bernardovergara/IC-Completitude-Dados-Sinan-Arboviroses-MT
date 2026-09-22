@@ -1,8 +1,8 @@
-library(tidyverse)
+library(tidyverse, warn.conflicts = FALSE)
 library(microdatasus)
 
 source("packages/system_process_mapping.r")
-source("config.r")
+source("scripts/config.r")
 
 # Criar diretório se não existir
 dir.create("data/filtered", showWarnings = FALSE, recursive = TRUE)

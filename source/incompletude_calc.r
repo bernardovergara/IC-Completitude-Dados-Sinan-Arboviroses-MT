@@ -1,4 +1,4 @@
-library(tidyverse)
+library(tidyverse, warn.conflicts = FALSE)
 
 calc_incomp <- function(subconjunto, total) {
   (nrow(subconjunto) / total) * 100

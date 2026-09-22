@@ -1,6 +1,6 @@
-library(tidyverse)
+library(tidyverse, warn.conflicts = FALSE)
 
-source("config.r")
+source("scripts/config.r")
 source("source/incompletude_calc.r")
 
 for (i in seq_len(nrow(combinacoes))) {

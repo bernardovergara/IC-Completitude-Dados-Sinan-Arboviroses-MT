@@ -1,90 +1,108 @@
-# Análise de completude de dados do Datasus
+# Análise da completude dos dados do SINAN
 
-## 📋 Descrição
+Este projeto calcula e visualiza indicadores de incompletude de variáveis essenciais em registros do Sistema de Informação de Agravos de Notificação (SINAN), com foco em dengue, chikungunya e zika no estado de Mato Grosso.
 
-Este projeto realiza o cálculo e visualização de indicadores de incompletude de variáveis essenciais em bases de dados do **Datasus** cobrindo múltiplos anos de análise.
+## Estrutura
 
-
-## 🚀 Quick Start
-
-### Pré-requisitos
-- R 4.0+
-- Pacotes: `tidyverse`, `microdatasus`
-
-### Configuração
-
-Edite `config.r` para definir:
-
-```r
-anos <- 2010:2025           # Anos a analisar
-ufs  <- "MT"                # Unidades Federativas
-siss <- c(                  # Sistemas de informação
-  "SINAN-DENGUE",
-  "SINAN-CHIKUNGUNYA",
-  "SINAN-ZIKA",
-  ...
-)
+```text
+artigo-completude-sinan-arboviroses.qmd  Manuscrito Quarto
+referencias.bib                          Referências bibliográficas
+modelo/                                   Modelo DOCX, CSS e estilo CSL
+scripts/                                  Configuração, tabelas e pipeline
+source/                                   Etapas de processamento
+data/                                     Dados filtrados e processados
+packages/                                 Funções auxiliares
+plots/                                    Gráficos gerados
 ```
 
-### Execução
+## Requisitos
+
+- R 4.0 ou superior
+- Quarto
+- Pacotes R: `tidyverse`, `microdatasus` e `knitr`
+
+O pipeline instala `tidyverse` e `microdatasus` quando necessário. O manuscrito instala `knitr` automaticamente durante a renderização, caso o pacote não esteja disponível.
+
+## Configuração
+
+Edite [`scripts/config.r`](scripts/config.r) para definir os anos, a unidade federativa, os sistemas de informação e as variáveis analisadas:
+
+```r
+anos <- 2010:2025
+ufs  <- c("MT")
+siss <- c("SINAN-DENGUE", "SINAN-CHIKUNGUNYA", "SINAN-ZIKA")
+```
+
+## Execução
+
+Execute os comandos a partir da raiz do projeto:
 
 ```bash
 Rscript pipeline.r
 ```
 
-O pipeline executa automaticamente em 3 etapas:
-1. **Importação**: Download e filtragem dos dados do DATASUS
-2. **Cálculo de Incompletude**: Processamento de variáveis
-3. **Visualização**: Geração de gráficos de evolução temporal
+O pipeline executa as seguintes etapas:
 
-### Geração do artigo final (`.docx`)
+1. Calcula a incompletude dos arquivos disponíveis em `data/filtered/`.
+2. Conta os registros por doença e por ano.
+3. Gera gráficos de evolução da incompletude em `plots/`.
+4. Gera tabelas resumidas em `data/tables/`.
 
-Para gerar a versão final do paper em Word, pronta para submissão à RESS:
+A etapa de importação e filtragem dos dados do DATASUS está disponível em [`source/importar_filtrado.r`](source/importar_filtrado.r), mas permanece comentada no pipeline. Para executá-la, descomente a chamada correspondente em [`pipeline.r`](pipeline.r).
+
+## Manuscrito
+
+O manuscrito é renderizado com:
+
+- [`modelo/modelo.docx`](modelo/modelo.docx) como modelo do Word;
+- [`referencias.bib`](referencias.bib) como banco bibliográfico;
+- [`modelo/vancouver.csl`](modelo/vancouver.csl) como estilo de citações.
+
+Para gerar o DOCX:
 
 ```bash
-quarto render paper_corrigido.qmd --to docx
+quarto render artigo-completude-sinan-arboviroses.qmd --to docx
 ```
 
-O comando produz `paper_corrigido.docx`. A renderização **não** refaz a análise:
-os chunks de R no arquivo estão desativados (`eval: false`) e servem apenas de documentação do pipeline. O documento é montado a partir de artefatos já existentes no repositório.
+Os heatmaps usados no manuscrito são construídos pelo script [`scripts/criar_tabelas.r`](scripts/criar_tabelas.r) e inseridos diretamente nos blocos R do documento.
 
-**Arquivos evocados na renderização:**
+## Saídas
 
-| Arquivo | Papel |
-| --- | --- |
-| `ress-reference.docx` | Template de estilo (Times New Roman 12, A4, margens 1,5 cm) |
-| `plots/plot_incompletude_SINAN_agregado_por_ano.png` | Figura 1 |
-| `plots/plot_incompletude_SINAN-DENGUE_por_ano.png` | Figura 2 |
-| `plots/plot_incompletude_SINAN-CHIKUNGUNYA_por_ano.png` | Figura 3 |
-| `plots/plot_incompletude_SINAN-ZIKA_por_ano.png` | Figura 4 |
+Arquivos de incompletude:
 
-**Arquivos citados apenas nos chunks de documentação** (não lidos na renderização,
-por estarem com `eval: false`) — reproduzem o pipeline que gera os insumos acima:
-`config.r`, `packages/system_process_mapping.r`, `data/utils/uf_ibge_cods.csv`,
-`source/incompletude_proc.r`, `source/plot_proc.r` e `source/paper_assets_base.r`.
+```text
+data/processed/incompletude_<SISTEMA>_<UF>_<ANO>.csv
+```
 
-> Caso os gráficos ainda não existam em `plots/`, gere-os antes com
-> `Rscript pipeline.r` seguido de `Rscript source/paper_assets_base.r`.
+Contagens:
 
-## 📈 Saídas
+```text
+data/processed/contagem_doencas_por_ano.csv
+data/processed/contagem_doencas_total.csv
+```
 
-### Arquivos de Incompletude
-Formato: `incompletude_<SISTEMA>_<UF>_<ANO>.csv`
+Tabelas resumidas:
 
-Exemplo: `incompletude_SINAN-DENGUE_MT_2010.csv`
+```text
+data/tables/tabela_incompletude_dengue.csv
+data/tables/tabela_incompletude_chikungunya.csv
+data/tables/tabela_incompletude_zika.csv
+data/tables/tabela_incompletude_consolidada.csv
+data/tables/tabela_incompletude_arboviroses_agregado.csv
+```
 
-### Gráficos
-Formato: `plot_incompletude_<SISTEMA>_por_ano.png`
+Gráficos de evolução:
 
-Exemplo: `plot_incompletude_SINAN-DENGUE_por_ano.png`
+```text
+plots/plot_incompletude_SINAN-DENGUE_por_ano.png
+plots/plot_incompletude_SINAN-CHIKUNGUNYA_por_ano.png
+plots/plot_incompletude_SINAN-ZIKA_por_ano.png
+```
 
-Mostra a evolução temporal das variáveis de incompletude para cada sistema.
-
-## 📚 Referências
+## Referências externas
 
 - [DATASUS - Microdados](https://www2.datasus.gov.br/)
 - [Pacote microdatasus](https://github.com/rfsaldanha/microdatasus)
 - [SINAN - Documentação](http://portalsinan.saude.gov.br/)
 
-<br>
-👨‍💻 Desenvolvido como Iniciação Científica (IC) - Universidade Federal de Rondonópolis
+Projeto desenvolvido como Iniciação Científica (IC) na Universidade Federal de Rondonópolis.

@@ -6,6 +6,5 @@ data/processed/*
 
 plots/*
 !plots/.gitkeep
-!plots/*.pdf
 
 .vscode/

@@ -238,7 +238,7 @@ dim_heatmap_docx <- function(tabela) {
 # PLOT BASE
 # =====================================
 
-plotar_heatmap_docx <- function(tabela, titulo) {
+plotar_heatmap_docx <- function(tabela, titulo = NULL) {
 
   niveis_classe <- names(cores_classificacao)
 
@@ -307,10 +307,7 @@ plotar_heatmap_docx <- function(tabela, titulo) {
 # GERAR OS HEATMAPS PARA O DOCX
 # =====================================
 
-heatmap_dengue_docx      <- plotar_heatmap_docx(tabela_dengue, "Incompletude das variáveis do SINAN-DENGUE. Mato Grosso, 2010-2025, n=422.823 registros")
-heatmap_chikungunya_docx <- plotar_heatmap_docx(tabela_chikungunya, "Incompletude das variáveis do SINAN-CHIKUNGUNYA. Mato Grosso, 2014-2025, n=115.159 registros")
-heatmap_zika_docx        <- plotar_heatmap_docx(tabela_zika, "Incompletude das variáveis do SINAN-ZIKA. Mato Grosso, 2015-2025, n=44.811 registros")
-heatmap_arboviroses_docx <- plotar_heatmap_docx(
-  tabela_arboviroses,
-  "Incompletude agregada das variáveis do SINAN. Mato Grosso, 2010-2025, n=582.793 registros"
-)
+heatmap_dengue_docx      <- plotar_heatmap_docx(tabela_dengue)
+heatmap_chikungunya_docx <- plotar_heatmap_docx(tabela_chikungunya)
+heatmap_zika_docx        <- plotar_heatmap_docx(tabela_zika)
+heatmap_arboviroses_docx <- plotar_heatmap_docx(tabela_arboviroses)

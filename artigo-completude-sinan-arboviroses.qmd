@@ -133,6 +133,8 @@ Declaramos o uso de tecnologia assistida por inteligência artificial na elabora
 ::: {#refs}
 :::
 
+<p class="espaco">&nbsp;</p>
+
 ```{r}
 #| label: fig-dengue
 #| fig-cap: "Incompletude das variáveis do SINAN-DENGUE. Mato Grosso, 2010-2025, n=422.823 registros"
@@ -142,6 +144,8 @@ Declaramos o uso de tecnologia assistida por inteligência artificial na elabora
 heatmap_dengue_docx
 ```
 
+<p class="espaco">&nbsp;</p>
+
 ```{r}
 #| label: fig-chik
 #| fig-cap: "Incompletude das variáveis do SINAN-CHIKUNGUNYA. Mato Grosso, 2014-2025, n=115.159 registros"
@@ -150,6 +154,8 @@ heatmap_dengue_docx
 
 heatmap_chikungunya_docx
 ```
+
+<p class="espaco">&nbsp;</p>
 
 ```{r}
 #| label: fig-zika
